@@ -1,0 +1,267 @@
+/* Обнуляющие стили */
+
+* {
+   padding: 0;
+   margin: 0;
+   border: 0;
+}
+
+*, *:before, *:after {
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+:focus, :active {
+   outline: none;
+}
+
+a:focus, a:active {
+   outline: none;
+}
+
+nav, footer, header, aside {
+   display: block;
+}
+
+html, body {
+   width: 100%;
+   height: 100%;
+   font-size: 100%;
+   line-height: 1;
+   font-size: 14px;
+   -ms-text-size-adjust: 100%;
+   -moz-text-size-adjust: 100%;
+   -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+   font-family: inherit;
+}
+
+input::-ms-clear {
+   display: none;
+}
+
+button {
+   cursor: pointer;
+}
+
+button::-moz-focus-inner {
+   padding: 0;
+   border: 0;
+}
+
+a, a:visited {
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: none;
+}
+
+ul li {
+   list-style: none;
+}
+
+img {
+   vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+   font-size: inherit;
+   font-weight: 400;
+}
+
+/* Подключаем шрифты */
+
+@font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Light.woff2") format("woff2"), url("../fonts/Stem-Light.woff") format("woff");
+   font-weight: 300;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Regular.woff2") format("woff2"), url("../fonts/Stem-Regular.woff") format("woff");
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Medium.woff2") format("woff2"), url("../fonts/Stem-Medium.woff") format("woff");
+   font-weight: 500;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Bold.woff2") format("woff2"), url("../fonts/Stem-Bold.woff") format("woff");
+   font-weight: bold;
+   font-style: normal;
+}
+
+body {
+   font-family: Stem;
+}
+
+.wrapper {
+   max-width: 1292px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+.header {
+   background-color: #000000;
+   position: fixed;
+   width: 100%;
+}
+
+.header__wrapper {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 71px;
+}
+
+.header__logo {
+   flex: 0 0 191px;
+   margin-right: 50px;
+   z-index: 3;
+}
+
+.header__logo img {
+   width: auto;
+   height: 71px;
+}
+
+.header__nav {
+   flex: 1 1 auto;
+}
+
+.header__list {
+   display: flex;
+   justify-content: space-between;
+}
+
+.header__item {
+   position: relative;
+}
+
+.drop-btn {
+   cursor: pointer;
+}
+
+.drop-btn::after {
+   content: url(../img/arrow-down-ico.svg);
+   margin-left: 10px;
+}
+
+.drop-btn::after {
+   content: url(../img/arrow-down-ico.svg);
+   margin-left: 10px;
+   transition: 0.3s;
+}
+
+.drop-btn.active::after {
+   content: url(../img/arrow-up-ico.svg);
+}
+
+.header__sub-list {
+   display: none;
+   position: absolute;
+   top: 42px;
+   left: 0;
+   width: 240px;
+   background-color: #3d3d3d;
+}
+
+.header__sub-list a {
+   display: block;
+   padding: 10px 20px;
+   background-color: #1e1e1e;
+   border-bottom: 1px solid #2f2f2f;
+}
+
+.header a {
+   font-size: 14px;
+   font-weight: normal;
+   color: #ffffff;
+   transition: 0.3s;
+}
+
+.header a:hover, .header a:focus, .header a:active {
+   color: #2780eb;
+}
+
+/* .user-list__login::before {
+   content: url(../img/user-menu-ico.svg);
+   margin-right: 10px;
+} */
+
+.header__burger {
+   cursor: pointer;
+   width: 18px;
+   height: 18px;
+   background: url(../img/burger-ico.svg) 0 0 no-repeat;
+   display: none;
+   z-index: 3;
+}
+
+.header__burger.active {
+   background: url(../img/close-ico.svg) no-repeat 0 0;
+}
+
+.content {
+   padding-top: 100px;
+}
+
+@media (max-width: 1180px) {
+   .header {
+      position: relative;
+   }
+   .header__wrapper {
+      height: 60px;
+   }
+
+   .header__logo img {
+      width: auto;
+      height: 60px;
+   }
+   .header__nav {
+      position: absolute;
+      left: 0px;
+      top: 0;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #000000;
+      padding: 70px 12px 100px 12px;
+      display: none;
+      overflow-y: auto;
+   }
+   .header__list {
+      display: block;
+   }
+   .header__list a {
+      display: block;
+      padding: 26px 0 25px 0;
+      border-bottom: 1px solid #151515;
+   }
+   .header__sub-list {
+      width: auto;
+      position: static;
+   }
+   .header__sub-list a {
+      background-color: #000000;
+      padding-left: 30px;
+   }
+   .header__burger {
+      display: block;
+   }
+}
+
+.active {
+   display: block;
+}

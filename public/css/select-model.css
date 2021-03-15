@@ -1,0 +1,200 @@
+@font-face {
+   font-family: 'Stem';
+   src: url('../fonts/Stem-Light.woff2') format('woff2'),
+       url('../fonts/Stem-Light.woff') format('woff');
+   font-weight: 300;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url('../fonts/Stem-Regular.woff2') format('woff2'),
+       url('../fonts/Stem-Regular.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url('../fonts/Stem-Medium.woff2') format('woff2'),
+       url('../fonts/Stem-Medium.woff') format('woff');
+   font-weight: 500;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url('../fonts/Stem-Bold.woff2') format('woff2'),
+       url('../fonts/Stem-Bold.woff') format('woff');
+   font-weight: bold;
+   font-style: normal;
+ }
+
+body {
+   
+   font-family: 'Stem';
+   font-style: normal;
+   font-weight: 300;
+   background-color: #F0F4FA;
+   
+}
+
+p {
+   font-size: 14px;
+}
+
+a {
+   color: #2780eb;
+   text-decoration: none;
+}
+
+.card {
+   border: none;
+   border-radius: 8px;
+   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 
+               0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
+               0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+.btn-primary {
+   color: #fff;
+   background-color: #2780eb;
+   border-color: #2780eb;
+   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+   
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+   background-color: #1E5DC5;
+   border-color: #1E5DC5;
+}
+
+.btn-success {
+   color: #fff;
+   background-color: #00D2A0;
+   border-color: #00D2A0;
+   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+   -webkit-transition: all 0.3s ease 0s;
+   transition: all 0.3s ease 0s;
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+   background-color: #00B98C;
+   border-color: #00B98C;
+}
+
+.btn-secondary {
+   color: #fff;
+   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+   -webkit-transition: all 0.3s ease 0s;
+   transition: all 0.3s ease 0s;
+}
+
+
+
+
+
+
+main {
+   background-color: #F0F4FA;
+}
+
+#stepProgressBar {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
+   width: 282px;
+   margin: 0 auto;
+   list-style: none;
+}
+
+.step {
+   text-align: center;
+}
+
+.step-subtext {
+   margin-top: 10px;
+   text-transform: uppercase;
+   color: #7d7d7d;
+   font-size: 12px;
+}
+
+.bullet {
+   border: 1px solid #2780eb;
+   height: 40px;
+   width: 40px;
+   border-radius: 100%;
+   color: #2780eb;
+   display: inline-block;
+   position: relative;
+   transition: background-color 500ms;
+   line-height: 40px;
+}
+
+.bullet.completed {
+   color: white;
+   background-color: #2780eb;
+}
+
+.bullet:after {
+   content: '';
+   position: absolute;
+   right: -100px;
+   bottom: 20px;
+   height: 1px;
+   width: 100px;
+   background-color: #2780eb;
+}
+
+#bullet:after {
+   content: none;
+}
+
+.header__list {
+   margin-bottom: 0;
+}
+.header__sub-list {
+   padding-left: 0;
+}
+
+
+.btn-tooltip {
+  position: relative;
+}
+
+.btn-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 2px 2px 2px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -110px;
+}
+
+.btn-tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.btn-tooltip:hover .tooltiptext {
+  visibility: visible;
+}

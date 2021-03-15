@@ -1,0 +1,447 @@
+/* Обнуляющие стили */
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+*, *:before, *:after {
+   box-sizing: border-box;
+}
+:focus, :active {outline: none;}
+a:focus, a:active {outline: none;}
+nav, footer, header, aside {
+   display: block;
+}
+html, body {
+   height: 100%;
+   width: 100%;
+   font-size: 100%;
+   line-height: 1;
+   font-size: 14px;
+}
+input, button, textarea {
+   font-family: inherit;
+}
+button { cursor: pointer;}
+a, a:visited {
+   text-decoration: none;
+}
+ul li {
+   list-style: none;
+}
+
+/* Шрифты */
+@font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Light.woff2") format("woff2"), url("../fonts/Stem-Light.woff") format("woff");
+   font-weight: 300;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Regular.woff2") format("woff2"), url("../fonts/Stem-Regular.woff") format("woff");
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Medium.woff2") format("woff2"), url("../fonts/Stem-Medium.woff") format("woff");
+   font-weight: 500;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Bold.woff2") format("woff2"), url("../fonts/Stem-Bold.woff") format("woff");
+   font-weight: bold;
+   font-style: normal;
+ }
+
+/* Общие стили */
+
+body {
+   font-family: 'Stem';
+   font-style: normal;
+   font-weight: normal;
+   background-color: #111111;
+   background-color: #333333;
+}
+
+
+.wrapper {
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 0 23px;
+}
+
+.title-lc {
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 23px;
+   color: #000000;
+}
+
+/* Start header */
+.header {
+   background-color: #000000;
+}
+.header__body {
+   display: flex;
+   align-items: center;
+   height: 71px;
+   
+}
+.header__nav {
+   flex: 1 1 auto;
+   text-align: center;
+}
+.header__link {
+   font-size: 14px;
+   line-height: 17px;
+   font-weight: 300;
+   color: #ffffff;
+   margin-right: 32px;
+}
+.header__link:hover {
+   color: #1E5DC5;
+}
+
+
+.main-lc {
+   display: flex;
+}
+.main-page {
+   flex: 1 1 auto;
+   background-color: #F0F4FA;
+   padding: 22px;
+   /* min-width: 0; Обязательно для slick-slider */
+   min-width: 0;  
+}
+.aside {
+   flex: 0 0 auto;
+   margin-right: 22px;
+}
+
+.user-profile{
+   padding-bottom: 12px;
+   margin-top: 22px;
+   margin-bottom: 22px;
+   max-width: 310px;
+   border-radius: 6px;
+   color: #F0F4FA;
+   background-color: #1c1c1c;
+
+}
+.user-profile__box {
+   display: flex;
+   align-items: center;
+   padding: 12px;
+   border-bottom: 1px solid #292929;
+   margin-bottom: 12px;
+}
+.user-profile__pict {
+   flex: 0 0 46px;
+   height: 46px;
+   border-radius: 4px;
+   overflow: hidden;
+   background-color: cadetblue;
+   margin-right: 12px;
+}
+.user-profile__username {
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 20px;
+   margin-bottom: 4px;
+}
+.user-profile__email {
+   font-weight: 300;
+   font-size: 16px;
+   line-height: 20px;
+}
+
+.user-profile__company {
+   display: flex;
+   align-items: center;
+   margin: 0 12px 0px 12px;
+}
+
+.user-profile__text {
+   font-size: 16px;
+   line-height: 20px;
+   font-weight: 500;
+   text-transform: uppercase;
+   color: #4A4A4A;
+   margin-left: 12px;
+   margin-bottom: 8px;
+}
+
+.user-profile__company-logo {
+   flex: 0 0 26px;
+   height: 26px;
+   border-radius: 4px;
+   overflow: hidden;
+   background-color: red;
+   margin-right: 12px;
+}
+
+.user-profile__company-name {
+   font-size: 16px;
+   line-height: 20px;
+   font-weight: 500;
+}
+
+
+
+
+.profile-stat {
+   padding: 17px 12px 21px 12px;
+   max-width: 310px;
+   background-color: #1c1c1c;
+   border-radius: 6px;
+   margin-bottom: 22px;
+}
+
+.profile-stat__status {
+   font-size: 16px;
+   line-height: 20px;
+   font-weight: 500;
+   color: #ffffff;
+   margin-bottom: 12px;
+
+}
+.profile-stat__status span {
+   color: #1E5DC5;
+}
+.profile-stat__bar { 
+   position: relative;
+   width: 100%;
+   height: 8px;
+   border-radius: 4px;
+   background-color: rgba(30, 93, 197, 0.31);
+   margin-bottom: 25px;
+}
+.profile-stat__bar::before {
+   display: block;
+   content: '';
+   position: ablolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 45%;
+   border-radius: 4px;
+   background-color: #1E5DC5;
+}
+
+.profile-stat__link {
+   position: relative;
+   font-size: 16px;
+   line-height: 20px;
+   font-weight: bold;
+   text-transform: uppercase;
+   color: #1E5DC5;
+}
+.profile-stat__link::after {
+   content: url(../img/lc/arrow-next-lc-ico.svg);
+   position: absolute;
+   top: 0;
+   right: -30px;
+}
+
+
+.user__list {
+   position: relative;
+   max-width: 310px;
+   background-color: #1c1c1c;
+   border-radius: 6px;
+   padding: 30px;
+}
+.user__link {
+   position: relative;
+   display: block;
+   font-size: 16px;
+   line-height: 20px;
+   font-weight: 500;
+   color: #828282;
+   margin-bottom: 38px;
+   padding-left: 26px;
+}
+
+.user__link--game {
+   margin-bottom: 0;
+}
+
+.user__link:before {
+   content: url(../img/lc/tech-ico.svg);
+   position: absolute;
+   top: -10px;
+   left: -20px;
+}
+.user__link--price:before {
+   content: url(../img/lc/price-ico.svg);
+}
+.user__link--plan:before {
+   content: url(../img/lc/plan-ico.svg);
+}
+.user__link--order:before {
+   content: url(../img/lc/order-ico.svg);
+}
+.user__link--analytic:before {
+   content: url(../img/lc/analytic-ico.svg);
+}
+
+.user__link--library:before {
+   content: url(../img/lc/library-ico.svg);
+}
+
+.user__link--analytic:before {
+   content: url(../img/lc/analytic-ico.svg);
+}
+
+.user__link--game:before {
+   content: url(../img/lc/game-ico.svg);
+}
+
+
+
+
+/* info-lc block Блок с аналитикой */
+.info-lc {
+   margin-bottom: 22px;
+}
+
+/* ord-lc block заказы*/
+.ord-lc {
+   margin-bottom: 22px;
+}
+.ord-lc__title {
+   margin-bottom: 18px;
+}
+
+
+.ord-lc__table {
+   width: 100%;
+   border-collapse: collapse;
+   background-color: #ffffff;
+}
+.ord-lc__table th {
+   border: 1px solid black;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 18px;
+   text-align: left;
+   color: #ACB5C1;
+   padding: 16px 16px;
+   background: #EDF1F7;
+   
+}
+.ord-lc__table td {
+   border: 1px solid black;
+   padding: 20px 16px;
+   font-size: 16px;
+   line-height: 21px;
+}
+.ord-lc__table span {
+   color: #1E5DC5;
+}
+
+
+
+
+.tech-lc__title {
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 23px;
+   margin-bottom: 18px;
+}
+/* .main-page {
+   min-width: 0;
+} */
+
+
+.tech-lc__cards {
+   position: relative;
+}
+
+.tech-lc__cards .slick-arrow {
+   position: absolute;
+   top: -40px;
+   z-index: 5;
+   font-size: 0;
+   width: 20px;
+   height: 20px;
+}
+.tech-lc__cards .slick-arrow.slick-prev {
+   right: 36px;
+   background: url(../img/lc/arrow-prev-ico.svg) 0 0 no-repeat;
+}
+.tech-lc__cards .slick-arrow.slick-next {
+   right: 0px;
+   background: url(../img/lc/arrow-next-ico.svg) 0 0 no-repeat;
+}
+
+
+.tech-lc__card {
+   max-width: 332px;
+   /* margin: 0 11px; */
+   text-align: center;
+   padding: 36px 24px 36px 24px;
+   border-radius: 6px;
+   background-color: #ffffff; 
+   margin: 0 auto;
+   
+}
+
+.tech-lc__card-name {
+   position: relative;
+   display: inline-block;
+   padding-left: 34px;
+   font-weight: bold;
+   font-size: 14px;
+   line-height: 18px;
+   color: #1E5DC5;
+   margin: 0 0 22px 0;
+}
+.tech-lc__card-name:before {
+   content: url(../img/lc/technology-ico.svg);
+   position: absolute;
+   top: -2px;
+   left: 0px;
+}
+
+.tech-lc__card-title {
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 110%;
+   margin: 0 0 20px 0;
+}
+
+.tech-lc__card-button {
+   display: block;
+   height: 50px;
+   max-width: 200px;
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 50px;
+   border-radius: 4px;
+   color: #ffffff;
+   background-color: #1E5DC5;
+   margin: 0 auto;
+}
+/* Слайдер */
+.slick-slider {
+
+}
+/* Ограничивающая оболочка */
+.slick-list {
+   overflow: hidden;
+}
+/* Лента слайдов */
+.slick-track {
+   display: flex;
+}
+
+.slick-slide {
+   border: none ;
+}

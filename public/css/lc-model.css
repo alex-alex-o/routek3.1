@@ -1,0 +1,365 @@
+/* Обнуляющие стили */
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+*, *:before, *:after {
+   box-sizing: border-box;
+}
+:focus, :active {outline: none;}
+a:focus, a:active {outline: none;}
+nav, footer, header, aside {
+   display: block;
+}
+html, body {
+   height: 100%;
+   width: 100%;
+   font-size: 100%;
+   line-height: 1;
+   font-size: 14px;
+}
+input, button, textarea {
+   font-family: inherit;
+}
+button { cursor: pointer;}
+a, a:visited {
+   text-decoration: none;
+}
+ul li {
+   list-style: none;
+}
+
+/* Шрифты */
+@font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Light.woff2") format("woff2"), url("../fonts/Stem-Light.woff") format("woff");
+   font-weight: 300;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Regular.woff2") format("woff2"), url("../fonts/Stem-Regular.woff") format("woff");
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Medium.woff2") format("woff2"), url("../fonts/Stem-Medium.woff") format("woff");
+   font-weight: 500;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Stem';
+   src: url("../fonts/Stem-Bold.woff2") format("woff2"), url("../fonts/Stem-Bold.woff") format("woff");
+   font-weight: bold;
+   font-style: normal;
+ }
+
+/* Общие стили */
+
+body {
+   font-family: 'Stem';
+   font-style: normal;
+   font-weight: normal;
+   background-color: #111111;
+   background-color: #333333;
+}
+/* order-select block */
+.order-select {
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   background-color: #F0F4FA;
+}
+.order-select__body {
+   min-height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 30px 15px;
+}
+
+.order-select__content {
+   max-width: 686px;
+   padding: 58px 60px;
+   border-radius: 8px;
+   background-color: #fff;
+}
+.order-select__title {
+   font-size: 22px;
+   font-weight: 500;
+   margin: 0 0 40px 0;
+}
+.order-select__list li {
+   margin: 0 0 30px 0;
+}
+.order-select__list li:last-child {
+   margin: 0;
+}
+.order-select__link {
+   font-size: 18px;
+   font-weight: normal;
+   color: #000000;
+}
+.order-select__link:hover,
+.order-select__link:focus,
+.order-select__link:active {
+   color: #1E5DC5;
+}
+@media (max-width: 680px) {
+   .order-select__body {
+      padding: 0;
+   }
+   .order-select__content {
+      padding: 40px 20px;
+   }
+  
+}
+
+
+/* lc-order style start */
+.lc-order {
+   padding: 22px;
+   background-color: #F0F4FA;
+   min-height: 100%;
+}
+
+.lc-order__content {
+   width: 100%;
+   padding: 40px 22px 30px 22px;
+   border-radius: 8px;
+   background-color: #fff;
+}
+.lc-order__form {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 -11px;
+}
+.lc-order__form--mod {
+   display: block;
+   margin: 0;
+   position: relative;
+}
+
+
+.lc-order__item {
+   width: calc(50% - 22px);
+   margin: 0 11px;
+}
+.lc-order__item--files {
+   position: relative;
+}
+.lc-order__label {
+   display: block;
+   font-size: 14px;
+   font-weight: bold;
+   text-transform: uppercase;
+   margin: 0 0 12px 0;
+}
+.wrap-2col {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 -11px;
+
+}
+.item-2col {
+   width: calc(50% - 22px);
+   margin: 0 11px;
+}
+
+.wrap-4col {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 -11px;
+}
+
+.item-4col {
+   width: calc(25% - 22px);
+   margin: 0 11px;
+}
+.item-4col--mod {
+   align-self: flex-end;
+}
+
+.lc-order__form input {
+   width: 100%;
+   height: 50px;
+   border-radius: 4px;
+   font-size: 16px;
+   padding: 0 16px;
+   margin: 0 0 22px 0;
+   background-color: #F4F6FA;
+}
+.lc-order__form input::placeholder {
+   color: #B8BDC6;
+}
+.lc-order__form textarea {
+   resize: none;
+   width: 100%;
+   height: 50px;
+   border-radius: 4px;
+   font-size: 16px;
+   padding: 0 16px;
+   line-height: 50px;
+   margin: 0 0 22px 0;
+   background-color: #F4F6FA;
+}
+.lc-order__form textarea::placeholder {
+   color: #B8BDC6;
+}
+.lc-order__form select {
+   position: relative;
+   width: 100%;
+   height: 50px;
+   border-radius: 4px;
+   font-size: 16px;
+   background-color: #F4F6FA;
+   padding: 0 16px;
+   margin: 0 0 22px 0;
+
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   -ms-appearance: none;
+   appearance: none;
+
+   background-image: url(../img/lc/arrow-down-lc-ico.svg);
+   background-position: calc(100% - 16px) 50%;
+   background-repeat: no-repeat;
+
+   /* -webkit-user-select: none;
+   -moz-user-select: -moz-none;
+   -ms-user-select: none;
+   user-select: none; */
+}
+
+.lc-order__form option {
+   background-color: #fff;
+   background-image: url(../img/lc/arrow-down-lc-ico.svg);
+   background-position: 98% 50%;
+   background-repeat: no-repeat;
+}
+
+.upload__area {
+   display: flex;
+   align-items: flex-end;
+   justify-content: center;
+   width: 100%;
+   min-height: 468px;
+   background-color: #F4F6FA;
+   background: #F4F6FA url(../img/lc/bg-upload.svg) center no-repeat;
+   padding: 36px;
+}
+.files-list {
+   overflow: hidden;
+   position: relative;
+   clip: rect(0 0 0 0);
+   opacity: 0;
+
+   
+}
+.file-list__placeholder {
+   position: absolute;
+   top: 26px;
+   left: 0;
+   height: 50px;
+   width: 100%;
+   border-radius: 4px;
+   font-size: 16px;
+   line-height: 50px;
+   padding: 0px 22px;
+   color: #B8BDC6;
+   background-color: #F4F6FA;
+}
+.list-files {
+   /* стили для списка файлов */
+   overflow: hidden;
+   position: absolute;
+   top: 26px;
+   left: 0;
+   list-style: none;
+   padding: 0px 22px;
+   width: 100%;
+   height: 50px;
+   border-radius: 4px;
+   font-size: 16px;
+   line-height: 50px;
+   white-space: nowrap;
+   display: flex;
+   background-color: #F4F6FA;
+   margin: 0;
+}
+
+.list-files li {
+   margin-right: 6px;
+}
+.lc-button {
+   display: block;
+   padding: 0 40px;
+   height: 50px;
+   font-size: 18px;
+   line-height: 50px;
+   font-weight: 500;
+   color: #ffffff;
+   background-color: #1E5DC5;
+   border-radius: 4px;
+   margin: 0 auto;
+   cursor: pointer;
+}
+
+.lc-button--mod {
+   display: inline-block;
+   margin-bottom: 20px;
+   position: relative;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+@media (max-width: 680px) {
+   .upload__area {
+      min-height: 50px;
+      padding: 0;
+      margin-bottom: 20px;
+      width: auto;
+      background: transparent;
+   }
+   .lc-order {
+      padding: 0;
+   }
+   .lc-order__form {
+      display: block;
+      margin: 0;
+   }
+   .lc-order__item {
+      width: 100%;
+      margin: 0;
+   }
+}
+
+@media (max-width: 420px) {
+   .wrap-2col {
+      display: block;
+      margin: 0;
+   
+   }
+   .item-2col {
+      width: 100%;
+      margin: 0;
+   }
+   
+   .wrap-4col {
+      display: block;
+      margin: 0;
+   }
+   
+   .item-4col {
+      width: 50%;
+      margin: 0;
+   }
+   
+}
