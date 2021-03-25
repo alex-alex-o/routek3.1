@@ -94,6 +94,7 @@ class Home extends PB_Controller {
 
             $order = $this->order_model->get_order_by_id($publicID);
 
+//            $this->notify("user_create");
             // Отправить письмо с паролем
 //            $this->load->library("notifications");
 //            $this->notifications->send(12,

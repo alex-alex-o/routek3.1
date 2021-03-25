@@ -229,6 +229,8 @@
        integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
        crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="/public/js/main.js"></script>
+
     <script type="text/javascript" src="/public/plugins/jsmodeler/three.min.js"></script>
     <script type="text/javascript" src="/public/plugins/jsmodeler/jsmodeler.js"></script>
     <script type="text/javascript" src="/public/plugins/jsmodeler/jsmodeler.ext.three.js"></script>

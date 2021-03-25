@@ -83,3 +83,9 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+defined('NOTIFY_USER_REGISTER')     OR define('NOTIFY_USER_REGISTER',    1);
+defined('NOTIFY_COMPANY_REGISTER')  OR define('NOTIFY_COMPANY_REGISTER', 2);
+defined('NOTIFY_COMPANY_NEW_ORDER') OR define('NOTIFY_COMPANY_NEW_ORDER', 5);
+defined('NOTIFY_USER_NEW_ORDER')    OR define('NOTIFY_USER_NEW_ORDER', 6);
