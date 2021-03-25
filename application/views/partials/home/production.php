@@ -30,6 +30,7 @@
                 
                 <?php if ($this->session->userdata("role") === null): ?>
                     <div class = "row">
+                        <h2>Оставьте нам ваши контакты и мы с вами свяжемся</h2>
                         <div class="col-sm-6 mb-2">
                             <label class="form-label h6" for="email">Email</label>
                             <input class="form-control" type = "email" id = "email" name = "email" value = "<?=$email;?>" placeholder = "Email для связи">
