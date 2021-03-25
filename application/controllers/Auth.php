@@ -457,6 +457,7 @@ class Auth extends CI_Controller {
                     $this->session->set_userdata('phone', $phone);
                     $this->session->set_userdata('email', $email);
 
+                   
                     $result = $this->auth_model->pre_register($data);
                     echo "{'result':$result}";
                 }

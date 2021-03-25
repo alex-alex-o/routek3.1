@@ -62,6 +62,8 @@
     <script src="<?= base_url()?>public/js/mdb.min.js"></script>
     <!-- Your custom scripts (optional) -->
     <script src="<?= base_url()?>public/js/wow.min.js"></script>
+    
+   
     <script>
       new WOW().init();
     </script>

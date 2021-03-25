@@ -192,6 +192,20 @@
                 return $this->input->post('id');
             }
             
+            public function save_order() {
+                $data = array(
+                       "technology_id" => $this->input->post("technology_id"),
+                       "material_id"   => $this->input->post("material_id"),
+                       "color_id"      => $this->input->post("color_id"),
+                       "quantity"      => $this->input->post("quantity")
+                );
+
+                $this->db->where("id", $this->input->post('id'));
+                $this->db->update("ci_order_items", $data);
+
+                return $this->input->post('id');
+            }
+            
             public function select_offer() {
                 $data = array(
                     "is_selected" => true

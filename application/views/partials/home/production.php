@@ -13,7 +13,7 @@
             <div class="card-body text-center">
                 <h5 class="card-title mb-3">Запрос на оценку стоимости 3D-печати</h5>
                 <h6 class="mb-3 text-secondary"><?= $acceptFiles?></h6>
-                
+
                 <div class = "row">
                     <input type="text" value = "" name = "fileList" />
                 </div>
@@ -28,18 +28,19 @@
 
                 <p class="mt-2">Максимальный размер файла <?= round($maxFileSize / 1024); ?> Мб</p>
                 
-                
-                <div class = "row">
-                    <div class="col-sm-6 mb-2">
-                        <label class="form-label h6" for="email">Email</label>
-                        <input class="form-control" type = "email" id = "email" name = "email" value = "" placeholder = "Email для связи">
-                    </div>                                            
+                <?php if ($this->session->userdata("role") === null): ?>
+                    <div class = "row">
+                        <div class="col-sm-6 mb-2">
+                            <label class="form-label h6" for="email">Email</label>
+                            <input class="form-control" type = "email" id = "email" name = "email" value = "<?=$email;?>" placeholder = "Email для связи">
+                        </div>                                            
 
-                    <div class="col-sm-6 mb-2">
-                        <label class="form-label h6" for="phone">Телефон</label>
-                        <input class="form-control" type = "phone" id = "phone" name = "phone" value = "" placeholder = "Телефон для связи">
-                    </div>                                            
-                </div>                      
+                        <div class="col-sm-6 mb-2">
+                            <label class="form-label h6" for="phone">Телефон</label>
+                            <input class="form-control" type = "phone" id = "phone" name = "phone" value = "<?=$phone;?>" placeholder = "Телефон для связи">
+                        </div>                                            
+                    </div>                      
+                <?php endif; ?>
             </div>
 
             <ul id = "stepProgressBar">
@@ -80,7 +81,11 @@
                 <div class="col-3">
                     <div class="btn-tooltip">
                         <input type="radio" class="btn-check" name="technology_id" value="<?php echo $techonlogy["id"]; ?>" id="<?php echo $techonlogy["id"]; ?>" autocomplete="off" <?php echo ($techonlogy["is_default"] == 1 ? "checked" : ""); ?>>
-                        <label class="btn btn-outline-secondary d-block" for="<?php echo $techonlogy["id"]; ?>"><?php echo ($techonlogy["name"] . ($techonlogy["is_default"] == 1 ? " (по умолчанию)" : "")); ?></label>
+                        <label class="btn btn-outline-secondary d-block" for="<?php echo $techonlogy["id"]; ?>">
+                            <?php // echo ($techonlogy["name"] . ($techonlogy["is_default"] == 1 ? " (по умолчанию)" : "")); ?>                
+                            <?php echo $techonlogy["name"]; ?>                
+                            <i class="fa fa-info-circle"></i>
+                        </label>
                         <span class="tooltiptext"><?php echo $techonlogy["full_name"] . " - " .$techonlogy["description"]; ?></span>
                    </div>
                 </div>
@@ -109,10 +114,7 @@
 
             <div class="card-body d-flex justify-content-between">
                 <a href="#" class="btn btn-secondary btn-prev">Назад</a>
-                <?php if(false): ?>
-                    <a href="/home/helper" class="btn btn-success mr-3">Воспользоваться интеллектуальным помощником</a>
-                <?php endif; ?>
-                <span></span>
+                <input type = "submit" name = "helper" class="btn btn-success mr-3" value = "Воспользоваться интеллектуальным помощником" />
                 <input type = "submit" class="btn btn-primary" value = "Далее" />
             </div>  
         </div>
@@ -244,10 +246,10 @@
 
         $.ajax({
             method:   "POST",
-            url:      "auth/pre_register",
+            url:      "/auth/pre_register",
             data: {"email" : $email, "phone" : $phone, "submit": '1', 'csrf_test_name' : $("input[name='csrf_test_name'").val()},
         }).done(function( msg ) {
-            console.log( "Data Saved: " + msg ); 
+            //console.log( "Data Saved: " + msg ); 
         });        
     });        
 </script>

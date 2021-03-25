@@ -107,9 +107,35 @@
                 return $publicID;
             }
             
-            public function get_order_by_id($publicID) {
-                $userID = $this->session->userdata("user_id");
+            public function change_order_material($publicID) {
+                if (empty($publicID)) {
+                    return null;
+                }
                 
+                $this->db->where("public_id", $publicID);
+                $order = $this->db->get('ci_orders')->row_array();
+
+                $this->db->where("order_id", $order["id"]);
+                $orderItem = $this->db->get('ci_order_items')->row_array();
+                
+                $materialID = $this->input->post('options');
+
+                $sql = "SELECT machine_id as technology_id FROM ci_materials WHERE id = $materialID";
+
+                $query = $this->db->query($sql);
+
+                $technolgy = $query->row_array();    
+                
+                $this->db->where('id', $orderItem["id"]);
+                $this->db->update('ci_order_items', 
+                        array(
+                            'material_id'   => $materialID,
+                            'technology_id' => $technolgy["technology_id"]
+                        )
+                );                  
+            }
+            
+            public function get_order_by_id($publicID) {
                 $sql = "SELECT oi.*, 
                                ofr.lead_time, 
                                c.name as company, 
@@ -117,6 +143,7 @@
                                s.name as status, 
                                t.short_name as technology, 
                                t.short_name as technology_short,
+                               t.name as technology_full,
                                m.name as material, 
                                cl.name as color, 
                                q.value as quality,
@@ -150,6 +177,7 @@
             public function get_deffered_order($sessionID) {
                 $sql =  "SELECT oi.*,
                                t.short_name as technology, 
+                               t.name as technology_full,
                                m.name as material, 
                                cl.name as color, 
                                q.value as quality,
@@ -300,7 +328,7 @@
                 return $this->input->post('public_id');
             }
             
-            // Проставление в таблице ORDERS user_id, если пользователь зарегистрировался или вошел
+            // Проставление в таблице ORDERS user_id, если пользователь зарегистрирован или вошел
             public function save_deferred() {
                 $this->db->where('session_id', $this->session->session_id);
                 $this->db->update('ci_orders', array('user_id' => $this->session->userdata('user_id')));

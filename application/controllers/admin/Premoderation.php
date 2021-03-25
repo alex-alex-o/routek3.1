@@ -84,6 +84,10 @@ class Premoderation extends MY_Controller {
     public function save_offer() {
         $this->order_model->save_offer();
     }
+
+    public function save_order() {
+        $this->order_model->save_order();
+    }
     
     public function select_offer() {
         $this->order_model->select_offer();        

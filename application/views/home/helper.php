@@ -12,24 +12,85 @@
       integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
    <link rel="stylesheet" href="<?= base_url()?>public/css/style.css">
    <link rel="stylesheet" href="<?= base_url()?>public/css/select-model.css">
+   <link rel="stylesheet" href="<?= base_url()?>public/css/helper.css">
 </head>
 
-<body class="home-page">
-    <?php if ($this->session->userdata("role") !== null): ?>
-        <?php include(VIEWPATH . '/include/registered_navbar.php'); ?>
-    <?php else: ?>
-        <?php include(VIEWPATH . '/include/unregistered_navbar.php'); ?>
+<body class="home-page" style="padding-top: 48px;">
+    <?php if (false): ?>
+        <?php if ($this->session->userdata("role") !== null): ?>
+            <?php include(VIEWPATH . '/include/registered_navbar.php'); ?>
+        <?php else: ?>
+            <?php include(VIEWPATH . '/include/unregistered_navbar.php'); ?>
+        <?php endif; ?>
+
+        <?php if(isset($msg) || validation_errors() !== ''): ?>
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa-warning"></i> Внимание!</h4>
+                <?= validation_errors();?>
+                <?= isset($msg)? $msg: ''; ?>
+            </div>
+        <?php endif; ?> 
     <?php endif; ?>
+    
+    <?php if($nextStep): ?>
+        <section class="helper">
+            <?php echo form_open_multipart(base_url("home/helper/$publicID/$nextStep"), '');?>
+                <div class="helper__window">
+                    <div class="helper__logo-box">
+                        <img src="<?= base_url()?>public/img/Logo-helper.svg" alt="helper" width="48" height="48">
+                        <h4 class="helper__logo-text">интеллектуальный</br> помощник (beta)</h4>
+                    </div>
 
-    <?php if(isset($msg) || validation_errors() !== ''): ?>
-        <div class="alert alert-warning alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa-warning"></i> Внимание!</h4>
-            <?= validation_errors();?>
-            <?= isset($msg)? $msg: ''; ?>
-        </div>
-   <?php endif; ?> 
+                    <?php foreach($questions as $question): ?>
+                        <h2 class="helper__title "><?php echo $question["text"]; ?></h2>
+                        <div class="helper__radio-box">
+                            <?php foreach($question["variants"] as $variant): ?>
+                                <input type="radio" class="helper-btn-check" name="variant" value = "<?php echo $variant["id"];?>" id="variant<?php echo $variant["id"];?>">
+                                <label class="helper__btn-md helper__btn-md--muted mb-2" for="variant<?php echo $variant["id"];?>">
+                                    <?php echo $variant["value"]; ?>
+                                </label>
+                            <?php endforeach; ?>
+                        </div>
 
+                        <div class="helper__btn-box">
+                            <!-- <a href="#" class="helper__btn-lg">Назад</a> -->
+                            <input type = "submit" class="helper__btn-md helper__btn-md--primary ml-auto" value = "Далее" />
+                        </div>
+                    <?php endforeach; ?>
+
+                </div>
+            <?php echo form_close(); ?>
+        </section>
+    <?php else: ?>
+        <section class="helper">
+            <?php echo form_open_multipart(base_url("home/helper/$publicID"), '');?>
+                <div class="helper__window">
+                    <div class="helper__logo-box">
+                        <img src="<?= base_url()?>public/img/Logo-helper.svg" alt="helper" width="48" height="48">
+                        <h4 class="helper__logo-text">интеллектуальный</br> помощник (beta)</h4>
+                    </div>
+
+                    <h2 class="helper__title ">Помощник подобрал для Вас следующие материалы</h2>
+                    <div class="helper__radio-box">
+                        <?php foreach($materials as $material): ?>
+                            <input type="radio" class="helper-btn-check" name="options" value = "<?php echo $material["id"];?>" id="option<?php echo $material["id"];?>" autocomplete="off">
+                            <label class="helper__btn-md helper__btn-md--muted mb-2" for="option<?php echo $material["id"];?>">
+                                <?php echo $material["name"]; ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <div class="helper__btn-box">
+                        <!-- <a href="#" class="helper__btn-lg">Назад</a> -->
+                        <input type = "submit" name = "order" class="helper__btn-md helper__btn-md--primary ml-auto" value = "Сделать заказ" />
+                    </div>
+
+                </div>
+            <?php echo form_close(); ?>
+        </section>
+    <?php endif;?>
+    
     <main style="margin-top: 71px;" class="py-4">
        <div class="container">
 

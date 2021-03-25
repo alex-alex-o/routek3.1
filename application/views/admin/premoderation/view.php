@@ -288,16 +288,11 @@
                             <div class="col-lg-10">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <?php $value = ""; ?>
-                                        <?php foreach($machines as $machine): ?>
-                                            <?php 
-                                                if ($order["technology_id"] == $machine["id"]) {
-                                                    $value = $machine["name"]; 
-                                                    break;
-                                                }
-                                            ?>
-                                        <?php endforeach; ?>
-                                        <input readonly type="text" class="form-control text-right" value="<?= $value; ?>" />
+                                        <select class="form-control show-tick editable" id = "technology_id" name = "technology_id">
+                                            <?php foreach($machines as $machine): ?>
+                                                <option <?= ($order["technology_id"] == $machine["id"] ? "selected" : "")?> value = "<?= $machine["id"]; ?>"><?= $machine["name"]; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -311,16 +306,11 @@
                             <div class="col-lg-10">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <?php $value = ""; ?>
-                                        <?php foreach($materials as $material): ?>
-                                            <?php 
-                                                if ($order["material_id"] == $material["id"]) {
-                                                    $value = $material["name"]; 
-                                                    break;
-                                                }
-                                            ?>
-                                        <?php endforeach; ?>
-                                        <input readonly type="text" class="form-control text-left" value="<?= $value; ?>" />
+                                        <select class="form-control show-tick editable" id = "material_id" name = "material_id">
+                                            <?php foreach($materials as $material): ?>
+                                                <option <?= ($order["material_id"] == $material["id"] ? "selected" : "")?> value = "<?= $material["id"]; ?>"><?= $material["name"]; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -334,16 +324,11 @@
                             <div class="col-lg-10">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <?php $value = ""; ?>
+                                        <select class="form-control show-tick editable" id = "color_id" name = "color_id">
                                         <?php foreach($colors as $color): ?>
-                                            <?php 
-                                                if ($order["color_id"] == $color["id"]) {
-                                                    $value = $color["name"]; 
-                                                    break;
-                                                }
-                                            ?>
+                                            <option <?= ($order["color_id"] == $color["id"] ? "selected" : "")?> value = "<?= $color["id"]; ?>"><?= $color["name"]; ?></option>
                                         <?php endforeach; ?>
-                                        <input readonly type="text" class="form-control text-left" value="<?= $value; ?>" />
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -357,11 +342,17 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input readonly type="text" id = "quantity" class="form-control text-right" value="<?= $order['quantity']; ?>" data-rule="quantity">
+                                        <input type="text" id = "quantity" class="form-control text-right" value="<?= $order['quantity']; ?>" data-rule="quantity">
                                     </div>                                                    
                                 </div>
                             </div>
+                           
+                            <div class = "col-lg-6">
+                                <a id = "save-order-button" class = "btn btn-primary">Сохранить изменения</a>
+                            </div>
+                        </div>
 
+                        <div class = "row clearfix">
                             <div class="col-lg-2">
                                 <label for = "volume">Объем</label>
                             </div>
@@ -374,40 +365,37 @@
                                 </div>
                             </div>
                         </div>
-
-
+                            
                         <div class = "row clearfix">
-                            <div class="row clearfix">
-                                <div class="col-lg-3">
-                                    <label for = "size">Габариты (мм)</label>
-                                </div>
+                            <div class="col-lg-3">
+                                <label for = "size">Габариты (мм)</label>
+                            </div>
 
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                               <div class="form-line">
-                                                   <input readonly type="text" id = "size-x" name = "size_x" class="form-control text-center" value="<?= $order['size_x']; ?>" />
-                                               </div>
-                                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                           <div class="form-line">
+                                               <input readonly type="text" id = "size-x" name = "size_x" class="form-control text-center" value="<?= $order['size_x']; ?>" />
+                                           </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                               <div class="form-line">
-                                                   <input readonly type="text" id = "size-y" name = "size_y" class="form-control text-center" value="<?= $order['size_y']; ?>" />
-                                               </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                           <div class="form-line">
+                                               <input readonly type="text" id = "size-y" name = "size_y" class="form-control text-center" value="<?= $order['size_y']; ?>" />
+                                           </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                               <div class="form-line">
-                                                   <input readonly type="text" id = "size-z" name = "size_z" class="form-control text-center" value="<?= $order['size_z']; ?>" />
-                                               </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                           <div class="form-line">
+                                               <input readonly type="text" id = "size-z" name = "size_z" class="form-control text-center" value="<?= $order['size_z']; ?>" />
+                                           </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>                                       
+                            </div>
                         </div>
 
                         <div class="row clearfix">
@@ -622,5 +610,25 @@
             //updateToken(return_data.csrfName, return_data.csrfHash);
         });         
     });    
+    
+    $("#save-order-button").click(function() {
+        if (confirm("Вы действительно хотите изменить заказ?")) {
+            var id = <?= $order["id"];?>;
+            $.ajax({
+                method: "POST",
+                url: "<?php echo site_url() . 'admin/premoderation/save_order' ?>",
+                data: {"id" : id, 
+                       "technology_id" : $("#technology_id").val(), 
+                       "material_id"   : $("#material_id").val(), 
+                       "color_id"      : $("#color_id").val(),
+                       "quantity"      : $("#quantity").val(), 
+                       '<?php echo $this->security->get_csrf_token_name();?>' : $("input[name='<?php echo $this->security->get_csrf_token_name();?>'").val()
+                }
+            })
+            .done(function( return_data ) {
+                console.log(return_data);
+            });         
+        }
+    });
 </script>
     

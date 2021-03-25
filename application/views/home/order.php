@@ -12,6 +12,8 @@
       integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
    <link rel="stylesheet" href="<?= base_url()?>public/css/style.css">
    <link rel="stylesheet" href="<?= base_url()?>public/css/select-model.css">
+   <link rel="stylesheet" href="<?= base_url()?>public/plugins/autocomplete/autocomplete.css">
+
 </head>
 
 <body class="home-page">
@@ -34,43 +36,36 @@
                            <div class="card model-slide">
                                <div class="card-body text-center">
                                     <h5 class="card-title mb-3">Запрос на расчет цены</h5>
-                                    <div class="d-flex flex-wrap px-3 py-1 justify-content-between">
+                                    <div class="d-flex px-3 py-1 justify-content-between align-items-center">
 
                                         <div class="my-2">
                                             <img src="<?php echo $order['snapshot']; ?>" height="96" width="96" alt="Изображение заказа" />
                                         </div>
+                                        
+                                        <div class="w-100 ml-4 text-left">
+                                            <div class="my-1">
+                                                <p class="mb-1">Технология</p>
+                                                <h6 class = "technology_id"><?php echo $order["technology_full"] . " (" . $order["technology"] . ")";?></h6>
+                                            </div>
 
-                                        <div class="my-4">
-                                           <p class="mb-1 ">Название</p>
-                                           <h6><?php echo $order["name"];?></h6>
-                                           <p class="mb-1">Цвет</p>
-                                           <h6 class = "color_id"><?php echo $order["color"];?></h6>
+                                            <div class="d-flex  justify-content-between flex-column flex-md-row">
+                                                <div class = "my-1"> 
+                                                    <p class="mb-1">Материал</p>
+                                                    <h6 class = "material_id"><?php echo $order["material"];?></h6>
+                                                </div>
+
+                                                <div class = "my-1">
+                                                    <p class="mb-1">Цвет</p>
+                                                    <h6 class = "color_id"><?php echo $order["color"];?></h6>                                        
+                                                </div>
+                                                
+                                                <div class = "my-1">
+                                                    <p class="mb-1">Габариты (мм)</p>
+                                                    <h6><?php echo $order["size_x"];?>x<?php echo $order["size_y"];?>x<?php echo $order["size_z"];?></h6>
+                                                </div>                                                
+                                            </div>
                                         </div>
-
-                                        <div class="my-4">
-                                           <p class="mb-1">Технология</p>
-                                           <h6 class = "technology_id"><?php echo $order["technology"];?></h6>
-
-                                           <p class="mb-1">Материал</p>
-                                           <h6 class = "material_id"><?php echo $order["material"];?></h6>
-                                        </div>
-
-                                        <div class="my-4">
-                                           <p class="mb-1">Точность</p>
-                                           <h6 class = "quality_id"><?php echo $order["quality"];?></h6>
-                                           <p class="mb-1">Заполнение</p>
-                                           <h6 class = "filling"><?php echo $order["filling"]; ?>%</h6>
-                                        </div>
-
-                                        <div class="my-4">
-                                           <p class="mb-1">Дата подачи</p>
-                                           <h6><?php echo $order["created_at"];?></h6>
-                                           <p class="mb-1">Габариты (мм3)</p>
-                                           <h6><?php echo $order["size_x"];?>x<?php echo $order["size_y"];?>x<?php echo $order["size_z"];?></h6>
-                                        </div>
-
                                     </div>
-
                                </div>
 
                                <div class="card-body d-flex justify-content-between text-right">
@@ -119,7 +114,7 @@
                                             <div class = "row">
                                                 <div class="col-sm-5 mb-2">
                                                     <label class="form-label h6" for="login">Email</label>
-                                                    <input class="form-control" type = "email" id = "login" required="true" name = "email" value = "" placeholder = "Email для входа">
+                                                    <input class="form-control" type = "email" id = "login" required="true" name = "email" value = "<?=$email;?>" placeholder = "Email для входа">
                                                 </div>                                            
 
                                                 <div class="col-sm-5 mb-2">
@@ -128,7 +123,7 @@
                                                 </div>                                            
 
                                                 <div class="col-sm-2 mb-2 mt-4">
-                                                    <input type = "submit" name ="submit" class="btn btn-primary" value = "Войти" />
+                                                    <input id = "submitRegistered" type = "submit" name ="submit" class="btn btn-primary" value = "Войти" />
                                                 </div>
 
                                             </div>
@@ -161,32 +156,42 @@
                                                       <input type="checkbox" class = "alreadyRegistered" id = "notRegistered" name = "notRegistered">
                                                       <span class="slider round"></span>
                                                     </label>
-                                                    <label class="form-label">Я уже зарегистрирован</label>
+                                                    <label class="form-label mt-2">Я уже зарегистрирован</label>
                                                 </div>
                                             </div>
 
                                             <div class = "row">
 
                                                 <div class="col-sm-4 mb-2">
-                                                    <label class="form-label h6" for="recipient">ФИО</label>
+                                                    <label class="form-label h6" for="recipient">Имя</label>
                                                     <input class="form-control" type = "text" id = "name" required="true" name = "name" value = "" placeholder = "Пользователь">
                                                 </div>                                            
 
                                                 <div class="col-sm-4 mb-2">
                                                     <label class="form-label h6" for="phone">Телефон</label>
-                                                    <input class="form-control" type = "text" id = "phone" name = "phone" placeholder = "Телефон" value = "" >
+                                                    <input class="form-control" type = "text" id = "phone" name = "phone" placeholder = "Телефон" value = "<?=$phone;?>" >
                                                 </div>
 
                                                 <div class="col-sm-4 mb-2">
                                                     <label class="form-label h6" for="email">Email*</label>
-                                                    <input class="form-control" type = "text" id = "email" required="true"  name = "email" placeholder = "Email" value = "" >
+                                                    <input class="form-control" type = "text" id = "email" required="true"  name = "email" placeholder = "Email" value = "<?=$email;?>" >
                                                 </div>
-                                                <div class="col-sm-12 mb-2 mt-2">
+                                                <?php if(false): ?>
+                                                    <div class="col-sm-12 mb-2 mt-2">
 
-                                                    <input type = "checkbox" name = "registerme" id = "registerme" checked/>
-                                                    <label for = "register">Зарегистрировать меня</label>
+                                                        <input type = "checkbox" name = "registerme" id = "registerme" checked/>
+                                                        <label for = "register">Зарегистрировать меня</label>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>      
+                                            <?php if (false): ?>
+                                            <div class="row">
+                                                <div class="col-sm-12 mb-2">
+                                                    <label class="form-label h6" for="phone">Введите адрес доставки</label>
+                                                    <input class="form-control" type = "text" id = "address" name = "address" autocomplete="on" placeholder = "Начните вводить адрес доставки">
                                                 </div>
-                                            </div>                                            
+                                            </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -195,65 +200,14 @@
                     </div>
             
                     <!-- Доставка -->
-                    <div id = "addressPanel" class="row mt-3 ">
-                       <div class="col-md-2">
-                       </div>
-                       <div class="col-md-8">
-                            <div class="row g-3">
-                                <div class="col-md-12">
-                                    <!-- Карточка ввода адреса  -->
-                                    <div class = "card model-slide">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title mb-3">Информация о доставке</h5>
-                                            <div class = "row">
-                                                <div class="col-sm-5 mb-2">
-                                                    <label class="form-label h6" for="city">Город *</label>
-                                                    <input class="form-control" type = "text" id = "city"   name = "city"  required="true"  placeholder = "Город" value = "">
-                                                </div>
-
-                                                <div class="col-sm-7 mb-2">
-                                                    <label class="form-label h6" for="street">Улица *</label>
-                                                    <input class="form-control" type = "text" id = "street" name = "street" required="true" placeholder = "Улица" value = "">
-                                                </div>
-
-                                                <div class="col-sm-4 mb-2">
-                                                    <label class="form-label h6" for="house">Дом *</label>
-                                                    <input class="form-control" type = "text" id = "house"  name = "house" required="true" placeholder = "Дом" value = "">
-                                                </div>
-
-                                                <div class="col-sm-4 mb-2">
-                                                    <label class="form-label h6" for="office">Офис/Квартира</label>
-                                                    <input class="form-control" type = "text" id = "office" name = "office" placeholder = "Офис/Квартира" value = "">
-                                                </div>
-
-                                                <div class="col-sm-4 mb-2">
-                                                    <label class="form-label h6" for="recipient">ФИО получателя</label>
-                                                    <input class="form-control" type = "text" id = "recipient" required="true" name = "recipient" value = "" placeholder = "Получатель">
-                                                </div>                                            
-                                            </div>
-
-                                        </div>
-
-                                        <div class="card-body d-flex justify-content-between text-right">
-                                            <span></span>
-                                            <div class="d-flex flex-wrap">
-                                                <span></span>
-                                                <input type = "submit" class="btn btn-primary" value = "Отправить на расчет" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
+                    <?php $this->load->view('partials/shipping/new_address_panel'); ?>
             
                 <?php echo form_close(); ?>
                     
             <?php else: ?>
 
                 <!-- Панель выбора адреса из списка сохраненных для зарегистрированных пользователей -->
-                <?php $this->load->view('partials/shipping/adresses'); ?>
+                <?php $this->load->view('partials/shipping/addresses'); ?>
                 
                 <!-- Всплывающая форма добавления адреса-->
                 <?php $this->load->view('partials/shipping/add_form'); ?>
@@ -286,7 +240,9 @@
 
     <!-- Input Mask Plugin Js -->
     <script src="<?= base_url() ?>public/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
-    
+
+    <script src="<?= base_url()?>public/plugins/autocomplete/autocomplete.js"></script>
+
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             <?php if (isset($firstModelUrl) && !empty($firstModelUrl)): ?>
@@ -301,7 +257,6 @@
             changeValue("quality_id");
             changeValue("color_id");
             changeValue("filling");
-            
         });
 
         function changeValue(field) {
@@ -314,10 +269,46 @@
             });
         }
 
-        document.getElementById('name').addEventListener('change', function (e) {
-            document.querySelector('#recipient').value = this.value;
-        });
+        if (document.getElementById('name') !== null) {
+            document.getElementById('name').addEventListener('change', function (e) {
+                document.querySelector('#recipient').value = this.value;
+            });
+        }
 
+        document.querySelectorAll(".alreadyRegistered").forEach(
+            item => item.addEventListener("change", function (e) {
+                if (this.checked) {
+                    document.getElementById('registered').checked = true;
+                    document.getElementById('notRegistered').checked = false;
+                    document.getElementById("registeredPanel").style.display = '';
+                    document.getElementById("unregisteredPanel").style.display = 'none';
+                    document.getElementById("addressPanel").style.display = 'none';
+                } else {
+                    document.getElementById('registered').checked = true;
+                    document.getElementById('notRegistered').checked = false;
+                    document.getElementById("unregisteredPanel").style.display = '';
+                    document.getElementById("registeredPanel").style.display = 'none';
+                    document.getElementById("addressPanel").style.display = '';
+                }
+            })
+        );
+
+        document.querySelectorAll("[required='true']").forEach(
+            item => item.addEventListener("input", function (e) {
+                let inputs = document.querySelectorAll("[required='true']");
+                for( i = 0; i < inputs.length; i++) {
+                    if (inputs[i].offsetParent !== null && inputs[i].value.trim() === '') {
+                        return;
+                    }
+                    document.getElementById('submitNotRegistered').disabled = true;
+                }
+                
+                if (document.getElementById('terms').checked) {
+                    document.getElementById('submitNotRegistered').disabled = false;
+                }
+            })
+        );
+        
         $('#loginForm').on('submit', function (e) {
             var email = $('#login').val();
             var pass  = $('#pass').val();
@@ -339,30 +330,11 @@
                     }
                 }
             });
-        });
-                
-        document.querySelectorAll(".alreadyRegistered").forEach(item => item.addEventListener('change', function (e) {
-            if (this.checked) {
-                document.getElementById('registered').checked = true;
-                document.getElementById('notRegistered').checked = false;
-                document.getElementById("registeredPanel").style.display = '';
-                document.getElementById("unregisteredPanel").style.display = 'none';
-                document.getElementById("addressPanel").style.display = 'none';
-            } else {
-                document.getElementById('registered').checked = true;
-                document.getElementById('notRegistered').checked = false;
-                document.getElementById("unregisteredPanel").style.display = '';
-                document.getElementById("registeredPanel").style.display = 'none';
-                document.getElementById("addressPanel").style.display = '';
-            }
-        }));
+        });        
         
-        $('#phone').inputmask('+9 (999) 999-99-99', { placeholder: '+_ (___) ___-__-__' }); 
-        $('#email').inputmask("email");       
-
         $('#email').on('blur', function(){
             var email = $('#email').val();
-            if (email == '') {
+            if (email === '') {
                 return;
             }
             
@@ -376,11 +348,31 @@
                         alert("Пользователь с таким email уже существует!");
                     }
                 }
-            })
+            });
         });
 
-
+        $('#phone').inputmask('+9 (999) 999-99-99', { placeholder: '+_ (___) ___-__-__' }); 
+        $('#email').inputmask("email");       
     </script>
+    
+    <?php if (false): ?>
+        <script type="text/javascript">
+            $('#address').bind('input', function(){
+                $.ajax({
+                    url: '/address/parse', 
+                    method: 'post',
+                    dataType: 'json',
+                    data: {"address": $("#address").val()},
+                    success: function(data) {
+                        //console.log(data.variants);
+                        //data.variants = ["1","2","3","4"];
+                        autocomplete(document.getElementById("address"), data.variants);                    
+                    }
+                });
+            });    
+
+        </script>    
+    <?php endif; ?>
 </body>
 
 </html>
